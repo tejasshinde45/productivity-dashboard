@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link id="favicon" rel="icon" type="image/svg+xml" href="./Images/favicon.svg">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.8.0/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main>
+        <nav>
+            <div class="app-name">
+                <h3>
+                    Productivity Dashboard
+                </h3>
+            </div>
+            <button class="theme-btn"><i class="ri-palette-fill"></i></button>
+        </nav>
+        <section class="allElem">
+            <div class="weather-wrapper">
+                <div class="left">
+                    <h2></h2>
+                    <h1></h1>
+                    <div class="context-toast"></div>
+                    <h4></h4>
+                </div>
+                <div class="right">
+                    <h1></h1>
+                    <h5></h5>
+                </div>
+            </div>
+            <div class="todo elem" id="0">
+                <img src="https://images.pexels.com/photos/7212857/pexels-photo-7212857.jpeg" alt="">
+                <h2>To do List</h2>
+            </div>
+            <div class="daily elem" id="1">
+                <img src="https://images.pexels.com/photos/6192499/pexels-photo-6192499.jpeg" alt="">
+                <h2>Daily Planner</h2>
+            </div>
+            <div class="moti elem" id="2">
+                <img src="https://images.pexels.com/photos/28887852/pexels-photo-28887852.jpeg" alt="">
+                <h2>Motivation</h2>
+            </div>
+            <div class="pomo elem" id="3">
+                <img src="https://images.pexels.com/photos/14750487/pexels-photo-14750487.jpeg" alt="">
+                <h2>Pomodoro Timer</h2>
+            </div>
+            <div class="goal elem" id="4">
+                <img src="https://i.pinimg.com/736x/c6/7c/62/c67c62d815c04afe0c6c76795bd68ad5.jpg" alt="">
+                <h2>Clock</h2>
+            </div>
+        </section>
+        <section class="fullElem todo-list-fullpage">
+            <button class="backbtn" id="0"><i class="ri-arrow-left-s-line"></i></button>
+            <h2>Your Personalised Task List</h2>
+
+            <div class="todo-container">
+                <div class="addTask">
+                    <form>
+                        <h3>Add New Task</h3>
+                        <input type="text" placeholder="Enter Task">
+                        <textarea placeholder="Enter Details" name="" id="" cols="30" rows="10"></textarea>
+
+                        <div class="mark-imp">
+                            <input type="checkbox" name="" id="check">
+                            <label for="check">Mark as Important</label>
+                        </div>
+                        <button>Add Task</button>
+                    </form>
+                </div>
+                <div class="allTask">
+
+                </div>
+            </div>
+        </section>
+        <section class="fullElem daily-planner-fullpage">
+            <button class="backbtn" id="1"><i class="ri-arrow-left-s-line"></i></button>
+            <h1>Plan your Day to be more Productive</h1>
+
+            <div class="today">
+                <h5>Monday,</h5>
+                <h5>2 / 2 / 2026</h5>
+            </div>
+
+            <div class="todays-time">
+                <h2>00:00 AM</h2>
+            </div>
+
+            <div class="day-planner">
+            </div>
+
+        </section>
+        <section class="fullElem motivational-fullpage">
+            <button class="backbtn" id="2"><i class="ri-arrow-left-s-line"></i></button>
+            <div id="blur-shadow"></div>
+            <div class="motivational-container">
+                <div id="img-div">
+                    <img id="quotesimg" src="/Images/quotesimg1.png" alt="">
+                    <img id="quotesimg-shadow" src="/Images/quotesimg1 copy.png" alt="">
+
+
+                    <div class="motivational-wrapper">
+                        <div class="motivation-1">
+                            <h2>Quote of the Day</h2>
+                        </div>
+
+                        <div class="motivation-2">
+                            <h1>
+
+                            </h1>
+                        </div>
+                        <div class="profile-pic">
+                            <img src="/Screenshot 2025-12-23 002013.png" alt="">
+                        </div>
+
+                        <div class="motivation-3">
+                            <h2></h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        <section class="fullElem pomodoro-fullpage">
+            <button class="backbtn" id="3"><i class="ri-arrow-left-s-line"></i></button>
+            <h1>Pomodoro Timer</h1>
+            <div class="app-wrapper">
+                <div class="app">
+
+                    <div class="header">
+                        <h1>FOCUS TIMER</h1>
+                        <p>Work with intention</p>
+                    </div>
+
+                    <div class="timer-wrapper">
+                        <div class="timer-circle">
+                            <svg width="220" height="220">
+                                <circle class="bg-circle" cx="110" cy="110" r="100"></circle>
+                                <circle class="progress-circle" cx="110" cy="110" r="100"></circle>
+                            </svg>
+                            <div class="time" id="time">25:00</div>
+                        </div>
+                    </div>
+
+                    <div class="session" id="sessionText">Focus Time</div>
+
+                    <div class="controls">
+                        <button id="startBtn">Start</button>
+                        <button id="pauseBtn">Pause</button>
+                        <button id="resetBtn">Reset</button>
+                    </div>
+
+                    <div class="modes">
+                        <div class="mode active" data-mode="focus">Focus</div>
+                        <div class="mode" data-mode="short">Short Break</div>
+                        <div class="mode" data-mode="long">Long Break</div>
+                    </div>
+
+                    <div class="footer">
+                        “Do one thing at a time.”
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="break-popup" id="breakPopup">
+                <div class="popup-content">
+                    <h2>Break time now</h2>
+                    <p>Choose your break</p>
+
+                    <div class="popup-actions">
+                        <button id="shortBreakBtn">Short Break</button>
+                        <button id="longBreakBtn">Long Break</button>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        <section class="fullElem daily-goals-fullpage">
+            <button class="backbtn" id="4"><i class="ri-arrow-left-s-line"></i></button>
+            <div class="container">
+                <div class="container-segment">
+                    <div class="segment-title">Hours</div>
+                    <div class="segment">
+                        <div class="flip-card" data-hours-tens>
+                            <div class="top">2</div>
+                            <div class="bottom">2</div>
+                        </div>
+                        <div class="flip-card" data-hours-ones>
+                            <div class="top">4</div>
+                            <div class="bottom">4</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-segment">
+                    <div class="segment-title">Minutes</div>
+                    <div class="segment">
+                        <div class="flip-card" data-minutes-tens>
+                            <div class="top">0</div>
+                            <div class="bottom">0</div>
+                        </div>
+                        <div class="flip-card" data-minutes-ones>
+                            <div class="top">0</div>
+                            <div class="bottom">0</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-segment">
+                    <div class="segment-title">Seconds</div>
+                    <div class="segment">
+                        <div class="flip-card" data-seconds-tens>
+                            <div class="top">0</div>
+                            <div class="bottom">0</div>
+                        </div>
+                        <div class="flip-card" data-seconds-ones>
+                            <div class="top">0</div>
+                            <div class="bottom">0</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script type="module" src="./Js/script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+
+.backbtn{
+    position: absolute;
+    right: 1.5%;
+    top: 5%;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: 2px solid var(--tri2);
+    background-color: transparent;
+    font-size: 30px;
+    color: var(--tri2);
+    overflow: hidden;
+    transition: all ease 0.4s;
+}
+
+.backbtn:active{
+    scale: 0.85;
+}
+
+.backbtn:hover{
+    color: var(--text-alice);
+    z-index: 999;
+    border: 2px solid var(--text-alice);
+}
+
+.backbtn::after{
+    content: "";
+    height: 100%;
+    width: 100%;
+    background-color: var(--tri2);
+    position: absolute;
+    left: 0;
+    bottom: -100%;
+    border-radius: 50%;
+    -webkit-transition: all ease 0.4s;
+    -o-transition: all ease 0.4s;
+    transition: all ease 0.4s;
+}
+
+.backbtn:hover::after{
+    bottom: 0;
+    border-radius: 0;
+    z-index: -1;
+}

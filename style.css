@@ -1,0 +1,41 @@
+@import url(./CSS/root.css);
+@import url(./CSS/font.css);
+@import url(./CSS/elem.css);
+@import url(./CSS/navbar.css);
+@import url(./CSS/todo.css);
+@import url(./CSS/dayplanner.css);
+@import url(./CSS/motivation.css);
+@import url(./CSS/pomo.css);
+@import url(./CSS/dashboard.css);
+@import url(./CSS/weather.css);
+@import url(/CSS/backbtn.css);
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: regular;
+    /* color: var(--tri2); */
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+main {
+    height: 100%;
+    width: 100%;
+    background-color: var(--pri);
+}
+
+* {
+    transition: background-color 0.4s ease,
+        color 0.4s ease,
+        border-color 0.4s ease;
+}
+
+:root {
+    --favicon-color: var(--tri2);
+}

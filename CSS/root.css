@@ -1,0 +1,23 @@
+
+:root{
+    --pri:#1C0A00;
+    --sec:#361500;
+    --tri1:#603601;
+    --tri2:#ffa319;
+
+    --card-bg:#CC9544;
+
+    --text-white:#ffffff;
+    --text-alice:aliceblue;
+    --text-wheat:wheat;
+    --text-antique:antiquewhite;
+
+    --danger-red:red;
+    --success-green:green;
+
+    --toast-bg:rgba(0, 0, 0, 0.85);
+    --shadow-dark:rgba(0, 0, 0, 0.603);
+    --shadow-soft:rgba(0,0,0,0.35);
+
+    --blur-orange:rgb(232, 126, 56);
+}

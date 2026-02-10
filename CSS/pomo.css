@@ -1,0 +1,397 @@
+
+:root {
+    --pri: #1C0A00;
+    --sec: #361500;
+    --tri1: #603601;
+    --tri2: #cc9544;
+    --bg: #f7f6f3;
+}
+
+@font-face {
+    font-family: light;
+    src: url(./AeonikTRIAL-Light.otf);
+}
+
+@font-face {
+    font-family: bold;
+    src: url(./AeonikTRIAL-Bold.otf);
+}
+
+@font-face {
+    font-family: regular;
+    src: url(./AeonikTRIAL-Regular.otf);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    font-family: regular;
+}
+
+body {
+    background: var(--bg);
+    height: 100vh;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    color: var(--pri);
+}
+
+.fullElem.pomodoro-fullpage>h1 {
+    color: var(--tri2);
+    font-size: 50px;
+}
+
+
+.app {
+    width: 500px;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+    border-radius: 100px;
+    padding: 50px 80px;
+    background: transparent;
+    -webkit-box-shadow: 0 10px 30px rgba(28, 10, 0, 0.25);
+            box-shadow: 0 10px 30px rgba(28, 10, 0, 0.25);
+}
+
+.app::after {
+    content: "";
+    position: absolute;
+    inset: -12px;
+    border-radius: 110px;
+    pointer-events: none;
+    opacity: 0;
+    -webkit-box-shadow: 0 0 30px var(--tri2);
+            box-shadow: 0 0 30px var(--tri2);
+}
+
+@-webkit-keyframes blinkGlow {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes blinkGlow {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+.app.blink::after {
+    -webkit-animation: blinkGlow 1s infinite;
+            animation: blinkGlow 1s infinite;
+}
+
+.header h1 {
+    font-size: 35px;
+    letter-spacing: 1px;
+    color: var(--tri2);
+}
+
+.header p {
+    font-size: 13px;
+    color: aliceblue;
+    margin-top: 4px;
+}
+
+.timer-wrapper {
+    margin: 40px 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+}
+
+.timer-circle {
+    width: 220px;
+    height: 220px;
+    position: relative;
+}
+
+svg {
+    -webkit-transform: rotate(-90deg);
+        -ms-transform: rotate(-90deg);
+            transform: rotate(-90deg);
+}
+
+circle {
+    fill: none;
+    stroke-width: 6;
+}
+
+.bg-circle {
+    stroke: var(--tri1);
+    opacity: 0.25;
+}
+
+.progress-circle {
+    stroke: var(--tri2);
+    stroke-linecap: round;
+    -webkit-transition: stroke-dashoffset 1s linear;
+    -o-transition: stroke-dashoffset 1s linear;
+    transition: stroke-dashoffset 1s linear;
+}
+
+.time {
+    position: absolute;
+    inset: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    font-size: 48px;
+    letter-spacing: 2px;
+    color: var(--bg);
+}
+
+.session {
+    margin-top: 12px;
+    font-size: 14px;
+    color: var(--bg);
+}
+
+.controls {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    gap: 25px;
+    margin: 40px 0;
+}
+
+.controls button {
+    padding: 10px 30px;
+    background: transparent;
+    border: 1px solid var(--tri2);
+    color: var(--tri2);
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 18px;
+
+    display: -webkit-box;
+
+    display: -ms-flexbox;
+
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+
+    position: relative;
+    overflow: hidden;
+    -webkit-transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+
+.controls button::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: var(--pri);
+    position: absolute;
+    left: 0;
+    bottom: -100%;
+    -webkit-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+    z-index: -1;
+}
+
+.controls button:hover::after {
+    bottom: 0;
+}
+
+.controls button:hover {
+    color: #fff;
+    border-color: #fff;
+}
+
+.modes {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    gap: 20px;
+    font-size: 18px;
+}
+
+.mode {
+    cursor: pointer;
+    color: var(--tri2);
+    position: relative;
+}
+
+.mode.active {
+    color: var(--bg);
+}
+
+.mode.active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 2px;
+    background: var(--bg);
+}
+
+.footer {
+    margin-top: 30px;
+    font-size: 15px;
+    color: var(--tri2);
+}
+
+.break-popup {
+    position: fixed;
+    inset: 0;
+    /* background: rgba(0, 0, 0, 0.45); */
+    -webkit-backdrop-filter: blur(4px);
+            backdrop-filter: blur(4px);
+    display: none;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    z-index: 999;
+}
+
+.break-popup.active {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.popup-content {
+    background: var(--pri);
+    padding: 30px 40px;
+    border-radius: 20px;
+    text-align: center;
+    -webkit-box-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
+}
+
+.popup-content h2 {
+    color: var(--tri2);
+    margin-bottom: 10px;
+    font-size: 28px;
+}
+
+.popup-content p {
+    color: var(--bg);
+    margin-bottom: 25px;
+}
+
+.popup-actions {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    gap: 20px;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+}
+
+.popup-actions button {
+    padding: 10px 25px;
+    border: 1px solid var(--tri2);
+    background: transparent;
+    color: var(--tri2);
+    font-size: 16px;
+    border-radius: 100px;
+    cursor: pointer;
+
+    display: -webkit-box;
+
+    display: -ms-flexbox;
+
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+
+    -webkit-transition: all 0.2s ease;
+
+    -o-transition: all 0.2s ease;
+
+    transition: all 0.2s ease;
+
+    position: relative;
+    overflow: hidden;
+}
+
+.popup-actions button::after{
+    content: "";
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    right: 0;
+    bottom: -100%;
+    background-color: var(--tri2);
+    -webkit-transition: all ease 0.4s;
+    -o-transition: all ease 0.4s;
+    transition: all ease 0.4s;
+    z-index: -1;
+}
+
+.popup-actions button:hover{
+    color: aliceblue;
+    z-index: 1;
+    border: 1px solid var(--bg);
+}
+
+.popup-actions button:active{
+    scale: 0.9;
+}
+
+.popup-actions button:hover::after {
+    bottom: 0;
+}

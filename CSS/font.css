@@ -1,0 +1,15 @@
+
+@font-face {
+    font-family: light;
+    src: url(../Fonts/AeonikTRIAL-Light.otf);
+}
+
+@font-face {
+    font-family: bold;
+    src: url(../Fonts/AeonikTRIAL-Bold.otf);
+}
+
+@font-face {
+    font-family: regular;
+    src: url(../Fonts/AeonikTRIAL-Regular.otf);
+}
