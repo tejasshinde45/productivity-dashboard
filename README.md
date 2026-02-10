@@ -28,6 +28,8 @@ The dashboard helps users manage tasks, plan their day, stay motivated, track ti
 ---
 
 ## 📁 Project Structure
+PRODUCTIVITY-DASHBOARD
+```
 │
 ├── .vscode/
 │
@@ -77,7 +79,7 @@ The dashboard helps users manage tasks, plan their day, stay motivated, track ti
 │ └── weather.js
 │
 ├── index.html
-└── style.css
+└── style.css```
 
 
 ---
