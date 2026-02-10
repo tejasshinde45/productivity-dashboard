@@ -2,6 +2,7 @@ section.allElem{
     /* height: 100%;
     width: 100%; */
     padding: 20px;
+    padding-top: 30px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -18,7 +19,7 @@ section.allElem{
             align-items: center;
     overflow: hidden;
     position: absolute;
-    top: 50px;
+    top: 70px;
     left: 0;
     right: 0;
     bottom: 0;
