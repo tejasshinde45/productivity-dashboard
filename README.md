@@ -29,57 +29,60 @@ The dashboard helps users manage tasks, plan their day, stay motivated, track ti
 
 ## 📁 Project Structure
 PRODUCTIVITY-DASHBOARD
-```
+## 📁 Project Structure
+
+```structure
+PRODUCTIVITY-DASHBOARD
 │
 ├── .vscode/
 │
 ├── audio/
-│ └── tick.mp3
+│   └── tick.mp3
 │
 ├── CSS/
-│ ├── backbtn.css
-│ ├── dashboard.css
-│ ├── dayplanner.css
-│ ├── elem.css
-│ ├── font.css
-│ ├── motivation.css
-│ ├── navbar.css
-│ ├── pomo.css
-│ ├── root.css
-│ ├── todo.css
-│ └── weather.css
+│   ├── backbtn.css
+│   ├── dashboard.css
+│   ├── dayplanner.css
+│   ├── elem.css
+│   ├── font.css
+│   ├── motivation.css
+│   ├── navbar.css
+│   ├── pomo.css
+│   ├── root.css
+│   ├── todo.css
+│   └── weather.css
 │
 ├── favicon/
-│ └── favicon.svg
+│   └── favicon.svg
 │
 ├── Fonts/
-│ ├── AeonikTRIAL-Bold.otf
-│ ├── AeonikTRIAL-Light.otf
-│ └── AeonikTRIAL-Regular.otf
+│   ├── AeonikTRIAL-Bold.otf
+│   ├── AeonikTRIAL-Light.otf
+│   └── AeonikTRIAL-Regular.otf
 │
 ├── Images/
-│ ├── morning.png
-│ ├── afternoon.png
-│ ├── evening.png
-│ ├── night.png
-│ ├── quotesimg1.png
-│ └── icons8-dashboard-16.png
+│   ├── morning.png
+│   ├── afternoon.png
+│   ├── evening.png
+│   ├── night.png
+│   ├── quotesimg1.png
+│   └── icons8-dashboard-16.png
 │
 ├── Js/
-│ ├── dashboard.js
-│ ├── dayplanner.js
-│ ├── favicon.js
-│ ├── motivation.js
-│ ├── openfeature.js
-│ ├── pomo.js
-│ ├── realtime.js
-│ ├── script.js
-│ ├── theme.js
-│ ├── todo.js
-│ └── weather.js
+│   ├── dashboard.js
+│   ├── dayplanner.js
+│   ├── favicon.js
+│   ├── motivation.js
+│   ├── openfeature.js
+│   ├── pomo.js
+│   ├── realtime.js
+│   ├── script.js
+│   ├── theme.js
+│   ├── todo.js
+│   └── weather.js
 │
 ├── index.html
-└── style.css```
+└── style.css
 
 
 ---
