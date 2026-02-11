@@ -2,8 +2,15 @@ export function pomoDoro() {
     let timer;
     let isRunning = false;
     let isBreak = false;
+    let currentMode = "focus";
 
-    let totalTime = 25 * 60;
+    const modeDurations = {
+        focus: 25,
+        short: 5,
+        long: 15
+    };
+
+    let totalTime = modeDurations.focus * 60;
     let timeLeft = totalTime;
 
     const appBox = document.querySelector(".app");
@@ -28,6 +35,9 @@ export function pomoDoro() {
     const circumference = 2 * Math.PI * radius;
     progressCircle.style.strokeDasharray = circumference;
     progressCircle.style.strokeDashoffset = 0;
+    timeDisplay.title = "Click to edit this timer";
+    timeDisplay.setAttribute("role", "button");
+    timeDisplay.setAttribute("tabindex", "0");
 
     function stopTickSound() {
         tickSound.pause();
@@ -52,7 +62,7 @@ export function pomoDoro() {
             String(seconds).padStart(2, "0");
 
         progressCircle.style.strokeDashoffset =
-            circumference * (1 - timeLeft / totalTime);
+            totalTime > 0 ? circumference * (1 - timeLeft / totalTime) : 0;
 
         if (isRunning && isBreak && timeLeft <= 10 && timeLeft > 0) {
             appBox.classList.add("blink");
@@ -113,15 +123,45 @@ export function pomoDoro() {
         startBtn.textContent = "Start";
     }
 
+    function setCustomTimeForCurrentMode() {
+        const modeLabel = currentMode === "focus"
+            ? "Focus"
+            : currentMode === "short"
+                ? "Short Break"
+                : "Long Break";
+
+        const currentMinutes = modeDurations[currentMode];
+        const input = window.prompt(
+            `${modeLabel} time in minutes (1-180):`,
+            String(currentMinutes)
+        );
+
+        if (input === null) return;
+
+        const parsed = Number.parseInt(input.trim(), 10);
+        if (!Number.isFinite(parsed) || parsed < 1 || parsed > 180) {
+            window.alert("Please enter a valid number between 1 and 180.");
+            return;
+        }
+
+        modeDurations[currentMode] = parsed;
+        stopTimer();
+        startBtn.textContent = "Start";
+        totalTime = parsed * 60;
+        timeLeft = totalTime;
+        updateDisplay();
+    }
+
     function setMode(mode) {
         stopTimer();
         hideBreakPopup();
         startBtn.textContent = "Start";
+        currentMode = mode;
 
         modes.forEach(m => m.classList.remove("active"));
 
         if (mode === "focus") {
-            totalTime = 25 * 60;
+            totalTime = modeDurations.focus * 60;
             isBreak = false;
             sessionText.textContent = "Focus Time";
             // progressCircle.style.stroke = "var(--tri2)";
@@ -129,7 +169,7 @@ export function pomoDoro() {
         }
 
         if (mode === "short") {
-            totalTime = 5 * 60;
+            totalTime = modeDurations.short * 60;
             isBreak = true;
             sessionText.textContent = "Short Break";
             // progressCircle.style.stroke = "var(--tri1)";
@@ -137,7 +177,7 @@ export function pomoDoro() {
         }
 
         if (mode === "long") {
-            totalTime = 15 * 60;
+            totalTime = modeDurations.long * 60;
             isBreak = true;
             sessionText.textContent = "Long Break";
             // progressCircle.style.stroke = "var(--tri1)";
@@ -163,6 +203,13 @@ export function pomoDoro() {
     startBtn.addEventListener("click", startTimer);
     pauseBtn.addEventListener("click", pauseTimer);
     resetBtn.addEventListener("click", resetTimer);
+    timeDisplay.addEventListener("click", setCustomTimeForCurrentMode);
+    timeDisplay.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            setCustomTimeForCurrentMode();
+        }
+    });
 
     modes.forEach(mode => {
         mode.addEventListener("click", () => {

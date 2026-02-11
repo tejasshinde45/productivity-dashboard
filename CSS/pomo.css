@@ -178,6 +178,18 @@ circle {
     font-size: 48px;
     letter-spacing: 2px;
     color: var(--bg);
+    cursor: pointer;
+    border-radius: 50%;
+    -webkit-transition: color 0.2s ease, text-shadow 0.2s ease;
+    -o-transition: color 0.2s ease, text-shadow 0.2s ease;
+    transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+
+.time:hover,
+.time:focus-visible {
+    color: var(--tri2);
+    text-shadow: 0 0 12px rgba(204, 149, 68, 0.5);
+    outline: none;
 }
 
 .session {
