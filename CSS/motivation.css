@@ -12,6 +12,8 @@
 
 #quotesimg {
     width: 100%;
+    -webkit-filter: hue-rotate(var(--quote-hue)) saturate(var(--quote-saturation));
+            filter: hue-rotate(var(--quote-hue)) saturate(var(--quote-saturation));
 }
 
 #quotesimg-shadow{
@@ -21,15 +23,15 @@
     top: 5%;
     z-index: -1;
     opacity: 0.4;
-    -webkit-filter: blur(13px);
-            filter: blur(13px);
+    -webkit-filter: blur(13px) hue-rotate(var(--quote-hue)) saturate(var(--quote-saturation));
+            filter: blur(13px) hue-rotate(var(--quote-hue)) saturate(var(--quote-saturation));
 }
 
 #blur-shadow{
     height: 50%;
     width: 50%;
     position: absolute;
-    background-color: var(--blur-orange);
+    background-color: var(--tri2);
     top: 50%;
     left: 50%;
     border-radius: 50%;
@@ -108,7 +110,7 @@
     bottom: 21%;
     left: 58%;
     font-family: bold;
-    color: var(--card-bg);
+    color: var(--tri2);
     -webkit-filter: brightness(1.5);
             filter: brightness(1.5);
 }

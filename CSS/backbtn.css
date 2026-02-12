@@ -19,9 +19,11 @@
 }
 
 .backbtn:hover{
-    color: var(--text-alice);
+    color: var(--pri);
     z-index: 999;
-    border: 2px solid var(--text-alice);
+    /* border: 2px solid var(--pri); */
+    border: none;
+    box-shadow: 0 0 15px var(--tri2);
 }
 
 .backbtn::after{

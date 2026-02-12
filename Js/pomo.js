@@ -3,6 +3,10 @@ export function pomoDoro() {
     let isRunning = false;
     let isBreak = false;
     let currentMode = "focus";
+    let isPreExtraCountdown = false;
+    let isExtraBreak = false;
+    let extraBreakElapsed = 0;
+    const extraBreakDelaySeconds = 5;
 
     const modeDurations = {
         focus: 25,
@@ -54,6 +58,20 @@ export function pomoDoro() {
     }
 
     function updateDisplay() {
+        if (isExtraBreak) {
+            const minutes = Math.floor(extraBreakElapsed / 60);
+            const seconds = extraBreakElapsed % 60;
+
+            timeDisplay.textContent =
+                String(minutes).padStart(2, "0") + ":" +
+                String(seconds).padStart(2, "0");
+
+            progressCircle.style.strokeDashoffset = 0;
+            appBox.classList.remove("blink");
+            stopTickSound();
+            return;
+        }
+
         const minutes = Math.floor(timeLeft / 60);
         const seconds = timeLeft % 60;
 
@@ -61,10 +79,14 @@ export function pomoDoro() {
             String(minutes).padStart(2, "0") + ":" +
             String(seconds).padStart(2, "0");
 
+        if (isPreExtraCountdown) {
+            sessionText.textContent = `Break done. Extra break starts in ${timeLeft}s`;
+        }
+
         progressCircle.style.strokeDashoffset =
             totalTime > 0 ? circumference * (1 - timeLeft / totalTime) : 0;
 
-        if (isRunning && isBreak && timeLeft <= 10 && timeLeft > 0) {
+        if (isRunning && isBreak && !isExtraBreak && timeLeft <= 10 && timeLeft > 0) {
             appBox.classList.add("blink");
 
             if (lastSecondPlayed !== timeLeft) {
@@ -83,6 +105,30 @@ export function pomoDoro() {
         }
     }
 
+    function clearExtraBreakState() {
+        isPreExtraCountdown = false;
+        isExtraBreak = false;
+        extraBreakElapsed = 0;
+    }
+
+    function startPreExtraBreakCountdown() {
+        isPreExtraCountdown = true;
+        isExtraBreak = false;
+        totalTime = extraBreakDelaySeconds;
+        timeLeft = totalTime;
+        sessionText.textContent = `Break done. Extra break starts in ${timeLeft}s`;
+        updateDisplay();
+    }
+
+    function startExtraBreak() {
+        isPreExtraCountdown = false;
+        isExtraBreak = true;
+        extraBreakElapsed = 0;
+        sessionText.textContent = "Extra Break (Pause to stop)";
+        progressCircle.style.strokeDashoffset = 0;
+        updateDisplay();
+    }
+
     function startTimer() {
         if (isRunning) return;
 
@@ -90,13 +136,34 @@ export function pomoDoro() {
         startBtn.textContent = "Running";
 
         timer = setInterval(() => {
+            if (isExtraBreak) {
+                extraBreakElapsed++;
+                updateDisplay();
+                return;
+            }
+
             if (timeLeft > 0) {
                 timeLeft--;
                 updateDisplay();
+                if (timeLeft === 0) {
+                    if (!isBreak) {
+                        stopTimer();
+                        startBtn.textContent = "Start";
+                        showBreakPopup();
+                    } else if (!isPreExtraCountdown) {
+                        startPreExtraBreakCountdown();
+                    } else {
+                        startExtraBreak();
+                    }
+                }
             } else {
-                stopTimer();
-
-                if (!isBreak) {
+                if (isBreak && !isPreExtraCountdown) {
+                    startPreExtraBreakCountdown();
+                } else if (isPreExtraCountdown) {
+                    startExtraBreak();
+                } else {
+                    stopTimer();
+                    startBtn.textContent = "Start";
                     showBreakPopup();
                 }
             }
@@ -119,6 +186,7 @@ export function pomoDoro() {
 
     function resetTimer() {
         hideBreakPopup();
+        clearExtraBreakState();
         setMode("focus");
         startBtn.textContent = "Start";
     }
@@ -147,8 +215,14 @@ export function pomoDoro() {
         modeDurations[currentMode] = parsed;
         stopTimer();
         startBtn.textContent = "Start";
+        clearExtraBreakState();
         totalTime = parsed * 60;
         timeLeft = totalTime;
+
+        if (currentMode === "focus") sessionText.textContent = "Focus Time";
+        if (currentMode === "short") sessionText.textContent = "Short Break";
+        if (currentMode === "long") sessionText.textContent = "Long Break";
+
         updateDisplay();
     }
 
@@ -156,6 +230,7 @@ export function pomoDoro() {
         stopTimer();
         hideBreakPopup();
         startBtn.textContent = "Start";
+        clearExtraBreakState();
         currentMode = mode;
 
         modes.forEach(m => m.classList.remove("active"));

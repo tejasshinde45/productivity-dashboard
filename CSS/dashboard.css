@@ -32,22 +32,21 @@ body {
   padding: .25em;
   overflow: hidden;
   font-size: 3em;
-  /* color: #ffa41b; */
-  color: #361500;
+  color: var(--tri2);
 }
 
 .top,
 .flip-card .top-flip {
-  background-color: #f7f7f7;
+  background-color: var(--tri1);
   border-top-right-radius: .1em;
   border-top-left-radius: .1em;
-  border-bottom: 1px solid rgba(255, 174, 24, 0.801);
+  border-bottom: 1px solid var(--tri2);
   text-align: center;
 }
 
 .bottom,
 .flip-card .bottom-flip {
-  background-color: white;
+  background-color: var(--tri1);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -152,5 +151,5 @@ body {
 
 .segment-title {
   font-size: 1rem;
-  color: #ffa41b67;   
+  color: var(--tri1);   
 }

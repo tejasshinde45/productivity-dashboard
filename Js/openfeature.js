@@ -2,22 +2,31 @@ export function openFeatures() {
     var allElems = document.querySelectorAll('.elem')
     var allFullPage = document.querySelectorAll('.fullElem')
     var allBackBtn = document.querySelectorAll('.backbtn')
+    var ACTIVE_PAGE_KEY = 'activePage'
+
+    function hideAllPages() {
+        allFullPage.forEach(function (page) {
+            page.style.display = 'none'
+        })
+    }
 
     allElems.forEach(function (elem) {
         elem.addEventListener('click', function () {
+            hideAllPages()
             allFullPage[elem.id].style.display = 'block'
-            localStorage.setItem('activePage', elem.id)
+            localStorage.setItem(ACTIVE_PAGE_KEY, elem.id)
         })
     })
 
     allBackBtn.forEach(function (back) {
         back.addEventListener('click', function () {
             allFullPage[back.id].style.display = 'none'
-            localStorage.removeItem('activePage')
+            localStorage.removeItem(ACTIVE_PAGE_KEY)
         })
     })
 
-    var savedPage = localStorage.getItem('activePage')
+    hideAllPages()
+    var savedPage = localStorage.getItem(ACTIVE_PAGE_KEY)
     if (savedPage !== null && allFullPage[savedPage]) {
         allFullPage[savedPage].style.display = 'block'
     }

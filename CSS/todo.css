@@ -87,6 +87,7 @@
 
 .todo-list-fullpage .todo-container .addTask form button:hover{
     border: 1px solid var(--tri2);
+    box-shadow: 0 0 25px var(--tri1);
 }
 
 .todo-list-fullpage .todo-container .allTask{
@@ -193,6 +194,7 @@
 .task button:hover{
     background-color: var(--tri2);
     color: var(--pri);
+
 }
 
 .task button:active{
